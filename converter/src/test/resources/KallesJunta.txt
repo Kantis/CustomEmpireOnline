@@ -1,0 +1,65 @@
+"Kalles junta Unified Stars"
+={
+	key="Kalles junta Unified Stars"
+	ship_prefix="ISS"
+	species={
+		class="AVI"
+		portrait="avi13"
+		name="Kalles junta"
+		plural="Le_PLural"
+		adjective="Kalleian"
+		name_list="FUN3"
+		trait="trait_agrarian"
+		trait="trait_thrifty"
+		trait="trait_decadent"
+		trait="trait_wasteful"
+	}
+	name="Kalles junta Unified Stars"
+	adjective="Kalles juntanssss"
+	authority="auth_democratic"
+	government="gov_military_commissariat"
+	ftl=warp
+	weapon="tech_missiles_1"
+	planet_name="Cynndor"
+	planet_class="pc_arid"
+	system_name="Cythra"
+	initializer=""
+	graphical_culture="mammalian_01"
+	city_graphical_culture="mammalian_01"
+	empire_flag={
+		icon={
+			category="pointy"
+			file="flag_pointy_2.dds"
+		}
+		background={
+			category="backgrounds"
+			file="v.dds"
+		}
+		colors={
+			"red"
+			"black"
+			"null"
+			"null"
+		}
+	}
+	ruler={
+		gender=female
+		name="Maivava uvi-Oveliadd"
+		portrait="avi13"
+		texture=1
+		hair=0
+		clothes=0
+		ruler_title_female="asd"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="personality_hegemonic_imperialists_room"
+	spawn_enabled=yes
+	ethic="ethic_xenophobe"
+	ethic="ethic_militarist"
+	ethic="ethic_spiritualist"
+	civics={
+		"civic_mining_guilds"
+		"civic_nationalistic_zeal"
+	}
+}
