@@ -1,14 +1,20 @@
 package se.codeboss.ceo.converter;
 
-import org.apache.commons.io.FileUtils;
+import lombok.val;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import se.codeboss.ceo.model.Empire;
+import se.codeboss.ceo.model.enums.*;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
+import static java.util.Arrays.asList;
+import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
 
 @SuppressWarnings("unused")
@@ -71,12 +77,38 @@ public class PdxEmpireFileParserTests {
 		private ResourceLoader resourceLoader;
 
 		@Test
-		public void transformToJson() throws IOException {
-			final String sample = FileUtils.readFileToString(resourceLoader.getResource("classpath:/KallesJunta.txt").getFile());
+		public void parseFile() throws IOException {
+			final List<Empire> parsedEmpires = PdxEmpireFileParser.parseFile(resourceLoader.getResource("classpath:/KallesJunta.txt").getFile());
 
-			final String json = PdxEmpireFileParser.transformEmpireFileToJson(sample);
+			assertEquals(1, parsedEmpires.size());
 
-			assertEquals("", json);
+			val parsedEmpire = parsedEmpires.get(0);
+
+			// Make sure all Prefixed enums are deserialized correctly
+			assertEquals(AuthorityType.Democratic, parsedEmpire.getAuthority());
+			assertEquals(PlanetClassType.Arid, parsedEmpire.getPlanetClass());
+			assertEquals(GovernmentType.MilitaryCommissariat, parsedEmpire.getGovernment());
+
+			// Traits
+			val expectedTraits = asList(TraitType.Agrarian, TraitType.Decadent, TraitType.Thrifty, TraitType.Wasteful);
+			val actualTraits = asList(parsedEmpire.getSpecies().getTraits());
+			assertFalse(Collections.disjoint(expectedTraits, actualTraits));
+
+			// Ethics
+			val expectedEthics = asList(EthicType.Xenophobe, EthicType.Militarist, EthicType.Spiritualist);
+			val actualEthics = asList(parsedEmpire.getEthics());
+			assertFalse(Collections.disjoint(expectedEthics, actualEthics));
+
+			// Civics
+			val expectedCivics = asList(CivicType.MiningGuilds, CivicType.NationalisticZeal);
+			val actualCivics = asList(parsedEmpire.getCivics());
+			assertFalse(Collections.disjoint(expectedCivics, actualCivics));
+
+			// Make sure UpperCameled enums are deserialized correctly
+			assertEquals(WeaponType.TechMissiles1, parsedEmpire.getWeapon());
+			assertEquals(GenderType.Female, parsedEmpire.getRuler().getGender());
+			assertEquals(GraphicalCultureType.Mammalian01, parsedEmpire.getCityGraphicalCulture());
+			assertEquals(GraphicalCultureType.Mammalian01, parsedEmpire.getGraphicalCulture());
 		}
 	}
 

@@ -1,4 +1,4 @@
-package se.codeboss.ceo.model;
+package se.codeboss.ceo.model.enums;
 
 import com.google.gson.annotations.SerializedName;
 

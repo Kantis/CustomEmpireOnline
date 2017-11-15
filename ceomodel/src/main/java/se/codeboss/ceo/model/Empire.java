@@ -1,8 +1,9 @@
 package se.codeboss.ceo.model;
 
-import lombok.Value;
+import lombok.Data;
+import se.codeboss.ceo.model.enums.*;
 
-@Value
+@Data
 public class Empire {
 	String key;
 	String shipPrefix;
@@ -12,7 +13,7 @@ public class Empire {
 	AuthorityType authority;
 	GovernmentType government;
 	FtlType ftl;
-	WeaponType weapons;
+	WeaponType weapon;
 	String planetName;
 	PlanetClassType planetClass;
 	String systemName;
@@ -27,5 +28,4 @@ public class Empire {
 	boolean spawnEnabled;
 	EthicType[] ethics;
 	CivicType[] civics;
-
 }

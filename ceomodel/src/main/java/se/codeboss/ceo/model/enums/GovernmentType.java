@@ -1,9 +1,6 @@
-package se.codeboss.ceo.model;
-
-import com.google.gson.annotations.SerializedName;
+package se.codeboss.ceo.model.enums;
 
 public enum GovernmentType {
-	@SerializedName("gov_military_commissariat")
 	MilitaryCommissariat,
 	PlutocraticOligarchy,
 	AssemblyOfClans,

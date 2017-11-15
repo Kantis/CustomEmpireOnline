@@ -1,8 +1,9 @@
 package se.codeboss.ceo.model;
 
-import lombok.Value;
+import lombok.Data;
+import se.codeboss.ceo.model.enums.GenderType;
 
-@Value
+@Data
 public class Ruler {
 	GenderType gender;
 	String name;

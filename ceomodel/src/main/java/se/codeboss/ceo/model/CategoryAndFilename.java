@@ -1,8 +1,8 @@
 package se.codeboss.ceo.model;
 
-import lombok.Value;
+import lombok.Data;
 
-@Value
+@Data
 public class CategoryAndFilename {
 	String category;
 	String file;

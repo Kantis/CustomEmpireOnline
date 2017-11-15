@@ -1,4 +1,4 @@
-package se.codeboss.ceo.model;
+package se.codeboss.ceo.model.enums;
 
 public enum PlanetClassType {
 	Arid,
