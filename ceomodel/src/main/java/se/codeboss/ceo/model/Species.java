@@ -3,7 +3,7 @@ package se.codeboss.ceo.model;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import se.codeboss.ceo.model.enums.SpeciesClassType;
-import se.codeboss.ceo.model.enums.TraitType;
+import se.codeboss.ceo.model.enums.SpeciesTraitType;
 
 @Data
 public class Species {
@@ -14,5 +14,5 @@ public class Species {
 	String plural;
 	String adjective;
 	String nameList;
-	TraitType[] traits;
+	SpeciesTraitType[] traits;
 }

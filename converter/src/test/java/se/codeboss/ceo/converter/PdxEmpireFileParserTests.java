@@ -90,7 +90,7 @@ public class PdxEmpireFileParserTests {
 			assertEquals(GovernmentType.MilitaryCommissariat, parsedEmpire.getGovernment());
 
 			// Traits
-			val expectedTraits = asList(TraitType.Agrarian, TraitType.Decadent, TraitType.Thrifty, TraitType.Wasteful);
+			val expectedTraits = asList(SpeciesTraitType.Agrarian, SpeciesTraitType.Decadent, SpeciesTraitType.Thrifty, SpeciesTraitType.Wasteful);
 			val actualTraits = asList(parsedEmpire.getSpecies().getTraits());
 			assertFalse(Collections.disjoint(expectedTraits, actualTraits));
 

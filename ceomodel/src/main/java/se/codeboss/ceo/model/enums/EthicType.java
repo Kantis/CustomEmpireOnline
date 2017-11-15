@@ -1,21 +1,24 @@
 package se.codeboss.ceo.model.enums;
 
+/**
+ * Stellaris/common/ethics/00_ethics.txt
+ */
 public enum EthicType {
-	Xenophobe,
-	FanaticXenophobe,
-	Xenophile,
-	FanaticXenophile,
-	Militarist,
-	FanaticMilitarist,
-	Pacifist,
-	FanaticPacifist,
-	Spiritualist,
-	FanaticSpiritualist,
-	Materialist,
-	FanaticMaterialist,
-	Egalitartian,
-	FanaticEgalitartian,
-	Authoritarian,
 	FanaticAuthoritarian,
+	Authoritarian,
+	FanaticEgalitarian,
+	Egalitarian,
+	FanaticXenophobe,
+	Xenophobe,
+	FanaticXenophile,
+	Xenophile,
+	FanaticMilitarist,
+	Militarist,
+	FanaticPacifist,
+	Pacifist,
+	FanaticSpiritualist,
+	Spiritualist,
+	FanaticMaterialist,
+	Materialist,
 	GestaltConsciousness
 }

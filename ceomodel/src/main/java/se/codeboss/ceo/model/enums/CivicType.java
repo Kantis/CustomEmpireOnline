@@ -1,5 +1,8 @@
 package se.codeboss.ceo.model.enums;
 
+/**
+ * Found in %GAMEDIR%/common/governments/civics/00_civics.txt
+ */
 public enum CivicType {
 	MiningGuilds,
 	ImperialCult,

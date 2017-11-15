@@ -47,7 +47,7 @@ public class PdxEmpireFileParser {
 										   .registerTypeAdapter(EthicType.class, new EthicTypeAdapter())
 										   .registerTypeAdapter(GovernmentType.class, new GovernmentTypeAdapter())
 										   .registerTypeAdapter(PlanetClassType.class, new PlanetClassTypeAdapter())
-										   .registerTypeAdapter(TraitType.class, new TraitTypeAdapter())
+										   .registerTypeAdapter(SpeciesTraitType.class, new TraitTypeAdapter())
 										   .registerTypeAdapter(WeaponType.class, new WeaponTypeAdapter())
 										   .registerTypeAdapter(GenderType.class, new GenderTypeAdapter())
 										   .registerTypeAdapter(GraphicalCultureType.class, new GraphicalCultureTypeAdapter())
