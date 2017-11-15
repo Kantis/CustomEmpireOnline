@@ -6,18 +6,15 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
-public class PdxEmpireFileParserTest {
+@SuppressWarnings("unused")
+public class PdxEmpireFileParserTests {
 
 	final static String NEW_LINE = System.getProperty("line.separator");
-
-	@Autowired
-	private ResourceLoader resourceLoader;
 
 	public static class UnitTests {
 
@@ -39,8 +36,8 @@ public class PdxEmpireFileParserTest {
 
 		@Test
 		public void generateDuplicateLinesExpression_Multiple() {
-			assertEquals("trait=(\"[a-z_]*\")$\\n\\s*trait=(\"[a-z_]*\")$", PdxEmpireFileParser.generateDuplicateLinesExpression("trait", 2));
-			assertEquals("trait=(\"[a-z_]*\")$\\n\\s*trait=(\"[a-z_]*\")$\\n\\s*trait=(\"[a-z_]*\")$\\n\\s*trait=(\"[a-z_]*\")$", PdxEmpireFileParser.generateDuplicateLinesExpression("trait", 4));
+			assertEquals("trait=(\"[a-z_]*\")$[\\r\\n]+\\s*trait=(\"[a-z_]*\")$", PdxEmpireFileParser.generateDuplicateLinesExpression("trait", 2));
+			assertEquals("trait=(\"[a-z_]*\")$[\\r\\n]+\\s*trait=(\"[a-z_]*\")$[\\r\\n]+\\s*trait=(\"[a-z_]*\")$[\\r\\n]+\\s*trait=(\"[a-z_]*\")$", PdxEmpireFileParser.generateDuplicateLinesExpression("trait", 4));
 		}
 
 		@Test
