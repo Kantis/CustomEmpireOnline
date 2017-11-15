@@ -17,12 +17,20 @@ public abstract class PrefixedEnumTypeAdapter<T extends Enum> extends TypeAdapte
 
 	@Override
 	public void write(JsonWriter out, T value) throws IOException {
-		out.value(getPrefix() + CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, value.name()));
+		out.value(serialize(value));
 	}
 
 	@Override
 	public T read(JsonReader in) throws IOException {
-		final String name = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, in.nextString().replaceAll(getPrefix(), ""));
+		return deserialize(in.nextString());
+	}
+
+	T deserialize(final String serialized) {
+		final String name = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, serialized.replaceAll(getPrefix(), ""));
 		return valueOfFunction().apply(name);
+	}
+
+	String serialize(final T value) {
+		return getPrefix() + CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, value.name());
 	}
 }

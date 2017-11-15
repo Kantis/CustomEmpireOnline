@@ -1,39 +1,36 @@
 package se.codeboss.ceo.converter.adapters;
 
-import com.google.gson.stream.JsonReader;
+import lombok.val;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 import se.codeboss.ceo.model.enums.AuthorityType;
 
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 
 public class AuthorityTypeAdapterTest {
 
 	private AuthorityTypeAdapter adapter;
-	private JsonReader jsonReader;
 
 	@Before
 	public void setup() {
 		adapter = new AuthorityTypeAdapter();
-		jsonReader = Mockito.mock(JsonReader.class);
 	}
 
 	@Test
 	public void read() throws IOException {
-		when(jsonReader.toString()).thenReturn("auth_democratic");
-
-		assertEquals(AuthorityType.Democratic, adapter.read(jsonReader));
+		assertEquals(AuthorityType.Democratic, adapter.deserialize("auth_democratic"));
 	}
 
+	/**
+	 * Going back and forth between serialized forms should *always* result in original value
+	 */
 	@Test
-	public void write() throws IOException {
-		when(jsonReader.toString()).thenReturn("auth_democratic");
-
-		assertEquals(AuthorityType.Democratic, adapter.read(jsonReader));
+	public void isReflective() {
+		for (val authorityType : AuthorityType.values()) {
+			assertEquals(authorityType, adapter.deserialize(adapter.serialize(authorityType)));
+		}
 	}
 
 }
