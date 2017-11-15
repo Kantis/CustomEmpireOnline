@@ -1,23 +1,15 @@
 package se.codeboss.ceo.converter;
 
-import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.apache.commons.io.FileUtils;
-import se.codeboss.ceo.converter.adapters.*;
 import se.codeboss.ceo.model.Empire;
-import se.codeboss.ceo.model.enums.*;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class PdxEmpireFileParser {
+class PdxEmpireFileReader extends PdxEmpireFileSerializer{
 
 	private static final int TRAITS_MAX_COUNT = 5;
 	private static final int ETHICS_MAX_COUNT = 3;
@@ -36,29 +28,17 @@ public class PdxEmpireFileParser {
 	static final String TWO_CIVICS_EXPRESSION = "civics=\\{\\s*(\"[a-z_]+\")\\s*(\"[a-z_]+\")\\s*}";
 	static final String SINGLE_CIVICS_EXPRESSION = "civics=\\{\\s*(\"[a-z_]+\")\\s*}";
 
-	public static List<Empire> parseFile(final File empireFile) throws IOException {
-		final List<Empire> result = new ArrayList<>();
+	static List<Empire> read(final String empireData) {
+		final String empireJson = transformEmpireFileToJson(empireData);
 
-		final String empireJson = transformEmpireFileToJson(FileUtils.readFileToString(empireFile));
-
-		final Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-										   .registerTypeAdapter(AuthorityType.class, new AuthorityTypeAdapter())
-										   .registerTypeAdapter(CivicType.class, new CivicTypeAdapter())
-										   .registerTypeAdapter(EthicType.class, new EthicTypeAdapter())
-										   .registerTypeAdapter(GovernmentType.class, new GovernmentTypeAdapter())
-										   .registerTypeAdapter(PlanetClassType.class, new PlanetClassTypeAdapter())
-										   .registerTypeAdapter(SpeciesTraitType.class, new TraitTypeAdapter())
-										   .registerTypeAdapter(WeaponType.class, new WeaponTypeAdapter())
-										   .registerTypeAdapter(GenderType.class, new GenderTypeAdapter())
-										   .registerTypeAdapter(GraphicalCultureType.class, new GraphicalCultureTypeAdapter())
-										   .create();
+		final Gson gson = createGson();
 
 		final Empire[] empires = gson.fromJson(empireJson, Empire[].class);
 
 		return Arrays.asList(empires);
 	}
 
-	static String transformEmpireFileToJson(final String empireString) {
+	private static String transformEmpireFileToJson(final String empireString) {
 		String result = empireString.replaceAll(EQUALS_ON_NEW_LINE_EXPRESSION, "");
 
 		// remove empty lines
