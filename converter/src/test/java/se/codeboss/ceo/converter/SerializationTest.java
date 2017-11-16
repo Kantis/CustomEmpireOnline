@@ -1,6 +1,7 @@
 package se.codeboss.ceo.converter;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,38 +14,82 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 public class SerializationTest {
 
-	@Autowired
-	private ResourceLoader resourceLoader;
+	@RunWith(SpringJUnit4ClassRunner.class)
+	public static class SingleEmpire {
+		private String empireData;
 
-	@Test
-	public void serializationIsReflective() throws IOException {
-		final String empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/SingleEmpire.txt").getFile());
+		@Autowired
+		private ResourceLoader resourceLoader;
 
-		final List<Empire> parsedEmpires = PdxEmpireFileReader.read(empireData);
+		@Before
+		public void setup() throws IOException {
+			empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/SingleEmpire.txt").getFile());
+		}
 
-		final PdxEmpireFileWriter writer = new PdxEmpireFileWriter();
-		final String serializedData = writer.write(parsedEmpires);
+		@Test
+		public void serializationIsReflective() throws IOException {
 
-		assertEquals(empireData, serializedData);
+			final List<Empire> parsedEmpires = PdxEmpireFileReader.read(empireData);
+
+			final PdxEmpireFileWriter writer = new PdxEmpireFileWriter();
+			final String serializedData = writer.write(parsedEmpires);
+
+			assertEquals(empireData, serializedData);
+		}
+
+		@Test
+		public void serializationIsReflective_ParseTwice() throws IOException {
+			final List<Empire> parsedEmpires = PdxEmpireFileReader.read(empireData);
+
+			final PdxEmpireFileWriter writer = new PdxEmpireFileWriter();
+			final String serializedData = writer.write(parsedEmpires);
+			final List<Empire> secondParsing = PdxEmpireFileReader.read(serializedData);
+
+			// Also makes sure writer is in a stable state after writing the first time..
+			final String secondSerialization = writer.write(secondParsing);
+
+			assertEquals(empireData, secondSerialization);
+		}
 	}
 
-	@Test
-	public void serializationIsReflective_ParseTwice() throws IOException {
-		final String empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/SingleEmpire.txt").getFile());
+	@RunWith(SpringJUnit4ClassRunner.class)
+	public static class TwoEmpires {
+		private String empireData;
 
-		final List<Empire> parsedEmpires = PdxEmpireFileReader.read(empireData);
+		@Autowired
+		private ResourceLoader resourceLoader;
 
-		final PdxEmpireFileWriter writer = new PdxEmpireFileWriter();
-		final String serializedData = writer.write(parsedEmpires);
-		final List<Empire> secondParsing = PdxEmpireFileReader.read(serializedData);
+		@Before
+		public void setup() throws IOException {
+			empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/TwoEmpires.txt").getFile());
+		}
 
-		// Also makes sure writer is in a stable state after writing the first time..
-		final String secondSerialization = writer.write(secondParsing);
+		@Test
+		public void serializationIsReflective() throws IOException {
 
-		assertEquals(empireData, secondSerialization);
+			final List<Empire> parsedEmpires = PdxEmpireFileReader.read(empireData);
+
+			final PdxEmpireFileWriter writer = new PdxEmpireFileWriter();
+			final String serializedData = writer.write(parsedEmpires);
+
+			assertEquals(empireData, serializedData);
+		}
+
+		@Test
+		public void serializationIsReflective_ParseTwice() throws IOException {
+			final List<Empire> parsedEmpires = PdxEmpireFileReader.read(empireData);
+
+			final PdxEmpireFileWriter writer = new PdxEmpireFileWriter();
+			final String serializedData = writer.write(parsedEmpires);
+			final List<Empire> secondParsing = PdxEmpireFileReader.read(serializedData);
+
+			// Also makes sure writer is in a stable state after writing the first time..
+			final String secondSerialization = writer.write(secondParsing);
+
+			assertEquals(empireData, secondSerialization);
+		}
 	}
 
 }

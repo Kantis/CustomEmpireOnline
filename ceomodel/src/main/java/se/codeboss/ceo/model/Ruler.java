@@ -12,5 +12,5 @@ public class Ruler {
 	int hair;
 	int clothes;
 	String rulerTitleFemale;
-	String rulerTitleMale;
+	String rulerTitle;
 }

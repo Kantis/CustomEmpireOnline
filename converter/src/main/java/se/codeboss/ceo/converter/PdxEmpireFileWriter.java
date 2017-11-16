@@ -92,8 +92,8 @@ class PdxEmpireFileWriter {
 		if (ruler.getRulerTitleFemale() != null)
 			builder.append(write("ruler_title_female", ruler.getRulerTitleFemale()));
 
-		if (ruler.getRulerTitleMale() != null)
-			builder.append(write("ruler_title_male", ruler.getRulerTitleMale()));
+		if (ruler.getRulerTitle() != null)
+			builder.append(write("ruler_title", ruler.getRulerTitle()));
 
 		builder.append(writeFooter());
 

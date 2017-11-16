@@ -78,7 +78,7 @@ public class PdxEmpireFileReaderTests {
 		private ResourceLoader resourceLoader;
 
 		@Test
-		public void parseFile() throws IOException {
+		public void parseFile_SingleEmpire() throws IOException {
 			final String empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/SingleEmpire.txt").getFile());
 
 			final List<Empire> parsedEmpires = PdxEmpireFileReader.read(empireData);
@@ -114,6 +114,15 @@ public class PdxEmpireFileReaderTests {
 			assertEquals(GenderType.Female, parsedEmpire.getRuler().getGender());
 			assertEquals(GraphicalCultureType.Mammalian01, parsedEmpire.getCityGraphicalCulture());
 			assertEquals(GraphicalCultureType.Mammalian01, parsedEmpire.getGraphicalCulture());
+		}
+
+		@Test
+		public void parseFile_TwoEmpires() throws IOException {
+			final String empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/TwoEmpires.txt").getFile());
+
+			final List<Empire> parsedEmpires = PdxEmpireFileReader.read(empireData);
+
+			assertEquals(2, parsedEmpires.size());
 		}
 	}
 

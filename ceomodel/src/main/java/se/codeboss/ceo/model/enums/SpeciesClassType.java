@@ -12,5 +12,7 @@ public enum SpeciesClassType {
 	Reptilian,
 	@SerializedName("MAM")
 	Mammalian,
+	@SerializedName("ART")
+	Arthropoid
 
 }
