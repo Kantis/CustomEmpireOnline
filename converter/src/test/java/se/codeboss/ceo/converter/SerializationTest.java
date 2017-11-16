@@ -21,7 +21,7 @@ public class SerializationTest {
 
 	@Test
 	public void serializationIsReflective() throws IOException {
-		final String empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/KallesJunta.txt").getFile());
+		final String empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/SingleEmpire.txt").getFile());
 
 		final List<Empire> parsedEmpires = PdxEmpireFileReader.read(empireData);
 
@@ -33,7 +33,7 @@ public class SerializationTest {
 
 	@Test
 	public void serializationIsReflective_ParseTwice() throws IOException {
-		final String empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/KallesJunta.txt").getFile());
+		final String empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/SingleEmpire.txt").getFile());
 
 		final List<Empire> parsedEmpires = PdxEmpireFileReader.read(empireData);
 

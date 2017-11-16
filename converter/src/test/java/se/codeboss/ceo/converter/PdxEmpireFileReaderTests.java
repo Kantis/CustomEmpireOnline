@@ -79,7 +79,7 @@ public class PdxEmpireFileReaderTests {
 
 		@Test
 		public void parseFile() throws IOException {
-			final String empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/KallesJunta.txt").getFile());
+			final String empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/SingleEmpire.txt").getFile());
 
 			final List<Empire> parsedEmpires = PdxEmpireFileReader.read(empireData);
 
