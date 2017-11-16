@@ -25,12 +25,14 @@ public abstract class PrefixedEnumTypeAdapter<T extends Enum> extends TypeAdapte
 		return deserialize(in.nextString());
 	}
 
-	T deserialize(final String serialized) {
+	public T deserialize(final String serialized) {
 		final String name = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, serialized.replaceAll(getPrefix(), ""));
 		return valueOfFunction().apply(name);
 	}
 
-	String serialize(final T value) {
-		return getPrefix() + CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, value.name());
+	public String serialize(final T value) {
+		// Add underscore before ending digits
+		final String name = value.name().replaceAll("(\\d+)$", "_$1");
+		return getPrefix() + CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, name);
 	}
 }

@@ -19,9 +19,15 @@ public class WeaponTypeAdapterTest {
 	}
 
 	@Test
-	public void read() throws IOException {
+	public void deserialize() throws IOException {
 		assertEquals(WeaponType.TechMissiles1, adapter.deserialize("tech_missiles_1"));
 		assertEquals(WeaponType.TechLasers1, adapter.deserialize("tech_lasers_1"));
+	}
+
+	@Test
+	public void serialize() throws IOException {
+		assertEquals("tech_missiles_1", adapter.serialize(WeaponType.TechMissiles1));
+		assertEquals("tech_lasers_1", adapter.serialize(WeaponType.TechLasers1));
 	}
 
 	/**
