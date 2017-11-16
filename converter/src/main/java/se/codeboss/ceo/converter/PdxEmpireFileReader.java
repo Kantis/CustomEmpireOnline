@@ -1,15 +1,19 @@
 package se.codeboss.ceo.converter;
 
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import se.codeboss.ceo.converter.adapters.*;
 import se.codeboss.ceo.model.Empire;
+import se.codeboss.ceo.model.enums.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-class PdxEmpireFileReader extends PdxEmpireFileSerializer{
+class PdxEmpireFileReader {
 
 	private static final int TRAITS_MAX_COUNT = 5;
 	private static final int ETHICS_MAX_COUNT = 3;
@@ -109,5 +113,19 @@ class PdxEmpireFileReader extends PdxEmpireFileSerializer{
 
 
 		return builder.toString();
+	}
+
+	private static Gson createGson() {
+		return new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+								.registerTypeAdapter(AuthorityType.class, new AuthorityTypeAdapter())
+								.registerTypeAdapter(CivicType.class, new CivicTypeAdapter())
+								.registerTypeAdapter(EthicType.class, new EthicTypeAdapter())
+								.registerTypeAdapter(GovernmentType.class, new GovernmentTypeAdapter())
+								.registerTypeAdapter(PlanetClassType.class, new PlanetClassTypeAdapter())
+								.registerTypeAdapter(SpeciesTraitType.class, new TraitTypeAdapter())
+								.registerTypeAdapter(WeaponType.class, new WeaponTypeAdapter())
+								.registerTypeAdapter(GenderType.class, new GenderTypeAdapter())
+								.registerTypeAdapter(GraphicalCultureType.class, new GraphicalCultureTypeAdapter())
+								.create();
 	}
 }
