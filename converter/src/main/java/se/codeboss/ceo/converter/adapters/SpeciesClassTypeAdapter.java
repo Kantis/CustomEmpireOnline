@@ -21,7 +21,7 @@ public class SpeciesClassTypeAdapter extends TypeAdapter<SpeciesClassType> {
 		return deserialize(in.nextString());
 	}
 
-	SpeciesClassType deserialize(final String serialized) {
+	public SpeciesClassType deserialize(final String serialized) {
 		for (val speciesClassType : SpeciesClassType.values()) {
 			if (speciesClassType.name().substring(0, 3).equalsIgnoreCase(serialized))
 				return speciesClassType;
@@ -35,7 +35,7 @@ public class SpeciesClassTypeAdapter extends TypeAdapter<SpeciesClassType> {
 				"Valid values are " + validValues);
 	}
 
-	String serialize(final SpeciesClassType value) {
+	public String serialize(final SpeciesClassType value) {
 		return value.name().substring(0, 3).toUpperCase();
 	}
 }

@@ -31,4 +31,20 @@ public class SerializationTest {
 		assertEquals(empireData, serializedData);
 	}
 
+	@Test
+	public void serializationIsReflective_ParseTwice() throws IOException {
+		final String empireData = FileUtils.readFileToString(resourceLoader.getResource("classpath:/KallesJunta.txt").getFile());
+
+		final List<Empire> parsedEmpires = PdxEmpireFileReader.read(empireData);
+
+		final PdxEmpireFileWriter writer = new PdxEmpireFileWriter();
+		final String serializedData = writer.write(parsedEmpires);
+		final List<Empire> secondParsing = PdxEmpireFileReader.read(serializedData);
+
+		// Also makes sure writer is in a stable state after writing the first time..
+		final String secondSerialization = writer.write(secondParsing);
+
+		assertEquals(empireData, secondSerialization);
+	}
+
 }
