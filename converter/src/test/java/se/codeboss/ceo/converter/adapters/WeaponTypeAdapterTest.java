@@ -1,9 +1,11 @@
 package se.codeboss.ceo.converter.adapters;
 
 import lombok.val;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import se.codeboss.ceo.model.enums.WeaponType;
+import se.codeboss.ceo.converter.adapters.WeaponTypeAdapter;
+import se.codeboss.stellaris.data.enums.WeaponType;
 
 import java.io.IOException;
 
@@ -20,8 +22,8 @@ public class WeaponTypeAdapterTest {
 
 	@Test
 	public void deserialize() throws IOException {
-		assertEquals(WeaponType.TechMissiles1, adapter.deserialize("tech_missiles_1"));
-		assertEquals(WeaponType.TechLasers1, adapter.deserialize("tech_lasers_1"));
+		Assert.assertEquals(WeaponType.TechMissiles1, adapter.deserialize("tech_missiles_1"));
+		Assert.assertEquals(WeaponType.TechLasers1, adapter.deserialize("tech_lasers_1"));
 	}
 
 	@Test
@@ -36,7 +38,7 @@ public class WeaponTypeAdapterTest {
 	@Test
 	public void isReflective() {
 		for (val weaponType : WeaponType.values()) {
-			assertEquals(weaponType, adapter.deserialize(adapter.serialize(weaponType)));
+			Assert.assertEquals(weaponType, adapter.deserialize(adapter.serialize(weaponType)));
 		}
 	}
 

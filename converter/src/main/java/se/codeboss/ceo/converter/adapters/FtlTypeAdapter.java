@@ -1,6 +1,6 @@
 package se.codeboss.ceo.converter.adapters;
 
-import se.codeboss.ceo.model.enums.FtlType;
+import se.codeboss.stellaris.data.enums.FtlType;
 
 import java.util.function.Function;
 

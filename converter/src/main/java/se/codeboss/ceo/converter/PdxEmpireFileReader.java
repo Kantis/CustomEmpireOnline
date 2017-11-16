@@ -6,8 +6,8 @@ import com.google.gson.GsonBuilder;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import se.codeboss.ceo.converter.adapters.*;
-import se.codeboss.ceo.model.Empire;
-import se.codeboss.ceo.model.enums.*;
+import se.codeboss.stellaris.data.Empire;
+import se.codeboss.stellaris.data.enums.*;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,6 +1,6 @@
 package se.codeboss.ceo.converter.adapters;
 
-import se.codeboss.ceo.model.enums.SpeciesTraitType;
+import se.codeboss.stellaris.data.enums.SpeciesTraitType;
 
 import java.util.function.Function;
 

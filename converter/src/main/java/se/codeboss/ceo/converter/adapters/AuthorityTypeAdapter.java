@@ -1,6 +1,6 @@
 package se.codeboss.ceo.converter.adapters;
 
-import se.codeboss.ceo.model.enums.AuthorityType;
+import se.codeboss.stellaris.data.enums.AuthorityType;
 
 import java.util.function.Function;
 

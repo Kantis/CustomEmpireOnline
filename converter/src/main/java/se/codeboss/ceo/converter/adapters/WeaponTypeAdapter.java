@@ -1,6 +1,6 @@
 package se.codeboss.ceo.converter.adapters;
 
-import se.codeboss.ceo.model.enums.WeaponType;
+import se.codeboss.stellaris.data.enums.WeaponType;
 
 import java.util.function.Function;
 

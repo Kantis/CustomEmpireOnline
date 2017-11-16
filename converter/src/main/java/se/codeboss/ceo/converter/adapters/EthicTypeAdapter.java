@@ -1,6 +1,6 @@
 package se.codeboss.ceo.converter.adapters;
 
-import se.codeboss.ceo.model.enums.EthicType;
+import se.codeboss.stellaris.data.enums.EthicType;
 
 import java.util.function.Function;
 

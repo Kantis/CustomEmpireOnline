@@ -3,7 +3,7 @@ package se.codeboss.ceo.converter;
 import lombok.val;
 import org.apache.commons.lang.text.StrBuilder;
 import se.codeboss.ceo.converter.adapters.*;
-import se.codeboss.ceo.model.*;
+import se.codeboss.stellaris.data.*;
 
 import java.util.List;
 

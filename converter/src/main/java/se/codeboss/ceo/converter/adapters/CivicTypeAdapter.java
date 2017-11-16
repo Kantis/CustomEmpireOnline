@@ -1,6 +1,6 @@
 package se.codeboss.ceo.converter.adapters;
 
-import se.codeboss.ceo.model.enums.CivicType;
+import se.codeboss.stellaris.data.enums.CivicType;
 
 import java.util.function.Function;
 

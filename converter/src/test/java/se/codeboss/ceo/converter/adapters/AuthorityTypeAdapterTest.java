@@ -3,7 +3,8 @@ package se.codeboss.ceo.converter.adapters;
 import lombok.val;
 import org.junit.Before;
 import org.junit.Test;
-import se.codeboss.ceo.model.enums.AuthorityType;
+import se.codeboss.ceo.converter.adapters.AuthorityTypeAdapter;
+import se.codeboss.stellaris.data.enums.AuthorityType;
 
 import java.io.IOException;
 

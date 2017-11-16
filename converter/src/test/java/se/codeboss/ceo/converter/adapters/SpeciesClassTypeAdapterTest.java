@@ -1,9 +1,11 @@
 package se.codeboss.ceo.converter.adapters;
 
 import lombok.val;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import se.codeboss.ceo.model.enums.SpeciesClassType;
+import se.codeboss.ceo.converter.adapters.SpeciesClassTypeAdapter;
+import se.codeboss.stellaris.data.enums.SpeciesClassType;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,7 +21,7 @@ public class SpeciesClassTypeAdapterTest {
 	@Test
 	public void isReflective() {
 		for (val speciesClassType : SpeciesClassType.values()) {
-			assertEquals(speciesClassType, adapter.deserialize(adapter.serialize(speciesClassType)));
+			Assert.assertEquals(speciesClassType, adapter.deserialize(adapter.serialize(speciesClassType)));
 		}
 	}
 

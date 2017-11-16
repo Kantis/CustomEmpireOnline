@@ -1,6 +1,6 @@
 package se.codeboss.ceo.converter.adapters;
 
-import se.codeboss.ceo.model.enums.GraphicalCultureType;
+import se.codeboss.stellaris.data.enums.GraphicalCultureType;
 
 import java.util.function.Function;
 

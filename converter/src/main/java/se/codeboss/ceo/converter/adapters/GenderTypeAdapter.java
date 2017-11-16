@@ -1,6 +1,6 @@
 package se.codeboss.ceo.converter.adapters;
 
-import se.codeboss.ceo.model.enums.GenderType;
+import se.codeboss.stellaris.data.enums.GenderType;
 
 import java.util.function.Function;
 

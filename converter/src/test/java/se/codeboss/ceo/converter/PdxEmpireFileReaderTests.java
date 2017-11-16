@@ -7,8 +7,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import se.codeboss.ceo.model.Empire;
-import se.codeboss.ceo.model.enums.*;
+import se.codeboss.stellaris.data.Empire;
+import se.codeboss.stellaris.data.enums.*;
 
 import java.io.IOException;
 import java.util.Collections;

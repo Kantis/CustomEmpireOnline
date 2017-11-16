@@ -1,6 +1,6 @@
 package se.codeboss.ceo.converter.adapters;
 
-import se.codeboss.ceo.model.enums.GovernmentType;
+import se.codeboss.stellaris.data.enums.GovernmentType;
 
 import java.util.function.Function;
 
