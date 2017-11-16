@@ -126,6 +126,7 @@ class PdxEmpireFileReader {
 								.registerTypeAdapter(WeaponType.class, new WeaponTypeAdapter())
 								.registerTypeAdapter(GenderType.class, new GenderTypeAdapter())
 								.registerTypeAdapter(GraphicalCultureType.class, new GraphicalCultureTypeAdapter())
+								.registerTypeAdapter(FtlType.class, new FtlTypeAdapter())
 								.create();
 	}
 }

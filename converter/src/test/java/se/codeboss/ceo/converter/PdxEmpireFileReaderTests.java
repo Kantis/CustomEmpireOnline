@@ -87,6 +87,8 @@ public class PdxEmpireFileReaderTests {
 
 			val parsedEmpire = parsedEmpires.get(0);
 
+			assertEquals(FtlType.Warp, parsedEmpire.getFtl());
+
 			// Make sure all Prefixed enums are deserialized correctly
 			assertEquals(AuthorityType.Democratic, parsedEmpire.getAuthority());
 			assertEquals(PlanetClassType.Arid, parsedEmpire.getPlanetClass());
